@@ -9,4 +9,4 @@ RUN  apk add --update --no-cache curl                                           
 FROM java:8-jdk-alpine
 COPY --from=downloader /usr/bin/embulk /usr/bin/embulk
 
-ENTRYPOINT ["embulk"]
+ENTRYPOINT ["java", "-jar", "/usr/bin/embulk"]

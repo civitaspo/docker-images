@@ -8,11 +8,12 @@ RUN  apk add --update --no-cache curl                                           
 
 FROM java:8-jdk-alpine
 COPY --from=downloader /usr/bin/embulk /usr/bin/embulk
-RUN  apk -v --update add python                   \
-                         py-pip                   \
-                         groff                    \
-                         less                     \
-                         mailcap                  \
+RUN  chmod 755 /usr/bin/embulk \
+         && apk -v --update add python            \
+                                py-pip            \
+                                groff             \
+                                less              \
+                                mailcap           \
          && pip install --upgrade awscli==1.16.52 \
          && apk -v --purge del py-pip             \
          && rm /var/cache/apk/*
