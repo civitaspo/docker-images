@@ -9,4 +9,4 @@ RUN  apk add --update --no-cache curl                                           
 FROM java:8-jdk-alpine
 COPY --from=downloader /usr/bin/digdag /usr/bin/digdag
 
-ENTRYPOINT ["digdag"]
+ENTRYPOINT ["java", "-jar", "/usr/bin/digdag"]
